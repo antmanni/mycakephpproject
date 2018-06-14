@@ -29,7 +29,7 @@
             <tr>
                 <td><?= h($movie->name) ?></td>
                 <td><?= $this->Number->format($movie->year) ?></td>
-                <td><?= $this->fetch('title') ?></td>
+                <td><?= $movie->director->name ?></td>
                 <td><?= h($movie->rating) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $movie->id]) ?>

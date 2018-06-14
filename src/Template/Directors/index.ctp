@@ -8,6 +8,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Director'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Movie'), ['controller' => 'Movies', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="directors index large-9 medium-8 columns content">

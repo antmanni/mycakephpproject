@@ -11,13 +11,19 @@ class MoviesController extends AppController {
 
 	/*
 	 * Index method
-	 * @return \Cake\Htttp\Response|void
+	 * @return \Cake\Http\Response|void
 	 */
 	public function index() {
 
+		$this->paginate = [
+			'contain' => ['Directors']
+		];
+
 		$movies = $this->paginate($this->Movies);
 
+
 		$this->set(compact('movies'));
+		$this->set('_serialize', ['movies']);
 	}
 
 	/*
