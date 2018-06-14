@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Movies Model
  *
  * @property \App\Model\Table\DirectorsTable|\Cake\ORM\Association\BelongsTo $Directors
+ * @property |\Cake\ORM\Association\HasMany $Ratings
  *
  * @method \App\Model\Entity\Movie get($primaryKey, $options = [])
  * @method \App\Model\Entity\Movie newEntity($data = null, array $options = [])
@@ -40,6 +41,9 @@ class MoviesTable extends Table
         $this->belongsTo('Directors', [
             'foreignKey' => 'director_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Ratings', [
+            'foreignKey' => 'movie_id'
         ]);
     }
 
