@@ -1,35 +1,36 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use \Cake\Collection\Collection;
 
-/*
- * Movie Entity 
+/**
+ * Movie Entity
  *
- * Created by: antmanni 
- * 
  * @property int $id
  * @property string $name
  * @property int $year
- * @property string $director
+ * @property int $director_id
  * @property int $rating
  *
+ * @property \App\Model\Entity\Director $director
  */
+class Movie extends Entity
+{
 
-class Movie extends Entity {
-
-
-	protected $_accessible = [
-		'name' => true,
-		'year' => true,
-		'director' => true,
-		'rating' => true
-
-	];
-
-
-
-
+    /**
+     * Fields that can be mass assigned using newEntity() or patchEntity().
+     *
+     * Note that when '*' is set to true, this allows all unspecified fields to
+     * be mass assigned. For security purposes, it is advised to set '*' to false
+     * (or remove it), and explicitly make individual fields accessible as needed.
+     *
+     * @var array
+     */
+    protected $_accessible = [
+        'name' => true,
+        'year' => true,
+        'director_id' => true,
+        'rating' => true,
+        'director' => true
+    ];
 }

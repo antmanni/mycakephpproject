@@ -17,9 +17,6 @@ class MoviesController extends AppController {
 
 		$movies = $this->paginate($this->Movies);
 
-		$query = $this->Movies->find('all')->contain(['Directors']);
-		debug($query);die;
-
 		$this->set(compact('movies'));
 	}
 
@@ -45,6 +42,8 @@ class MoviesController extends AppController {
 	public function add() {
 
 		$movie = $this->Movies->newEntity();
+		$this->set('directors', $this->Movies->Directors->find('list'));
+
 		if ($this->request->is('post')) {
 			$movie = $this->Movies->patchEntity($movie, $this->request->getData());
 			if ($this->Movies->save($movie)) {
@@ -98,6 +97,14 @@ class MoviesController extends AppController {
 
 			return $this->redirect(['action' => 'index']);
 		}
+	}
+
+	public function findDirectorName($movies) {
+
+		foreach ($movies as $movie) {
+			
+		}
+
 	}
 
 }

@@ -19,8 +19,15 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('year');
-            echo $this->Form->control('director');
-            echo $this->Form->control('rating');
+            echo $this->Form->control('director_id');
+            echo 'rating';
+            echo $this->Form->select('rating', [
+            	1 => 1, 
+            	2 => 2, 
+            	3 => 3, 
+            	4 => 4, 
+            	5 => 5
+            ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
