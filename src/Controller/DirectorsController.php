@@ -35,9 +35,9 @@ class DirectorsController extends AppController
     public function view($id = null)
     {
         $director = $this->Directors->get($id, [
-            'contain' => []
+            'contain' => ['Movies']
         ]);
-
+        
         $this->set('director', $director);
     }
 

@@ -21,12 +21,21 @@
             <td><?= h($director->name) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($director->id) ?></td>
+            <th scope="row"><?= __('Database id') ?></th>
+            <td><?= h($director->id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Birthdate') ?></th>
             <td><?= h($director->birthdate) ?></td>
         </tr>
     </table>
+    <h3> Directed movies </h3>
+    <tbody>
+            <?php foreach ($director->movies as $movie): ?>
+                <li>
+                    <?= $this->Html->link(__($movie->name), ['controller' => 'Movies', 'action' => 'view', $movie->id])?> (<?= h($movie->year) ?>)
+                </li>
+            <?php endforeach; ?>
+
+    </tbody>    
 </div>

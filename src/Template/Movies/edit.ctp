@@ -14,6 +14,7 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Movies'), ['action' => 'index']) ?></li>
+        <li><?=$this->Html->link(__('List Directos'), ['controller' => 'Directos', 'action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="movies form large-9 medium-8 columns content">
@@ -23,7 +24,15 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('year');
-            echo $this->Form->control('rating');
+            echo $this->Form->control('director_id');
+            echo 'rating';
+            echo $this->Form->select('rating', [
+                1 => 1, 
+                2 => 2, 
+                3 => 3, 
+                4 => 4, 
+                5 => 5
+            ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

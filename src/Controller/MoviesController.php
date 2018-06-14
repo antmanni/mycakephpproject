@@ -35,7 +35,7 @@ class MoviesController extends AppController {
 	public function view($id = null) {
 
 		$movie = $this->Movies->get($id, [
-			'contain' => []
+			'contain' => ['Directors']
 		]);
 
 		$this->set('movie', $movie);
@@ -91,9 +91,12 @@ class MoviesController extends AppController {
 	public function edit($id = null) {
 
 		$movie = $this->Movies->get($id, [
-			'contain' => []
+			'contain' => ['Directors']
 		]);
-		if ($this->request->id(['patch', 'post', 'put'])) {
+
+		$this->set('directors', $this->Movies->Directors->find('list'));
+
+		if ($this->request->is(['patch', 'post', 'put'])) {
 			$movie = $this->Movies->patchEntity($movie, $this->request->getData());
 			if ($this->Movies->save($movie)) {
 				$this->Flash->succes(__('Movie succesfully edited.'));
@@ -103,14 +106,7 @@ class MoviesController extends AppController {
 
 			return $this->redirect(['action' => 'index']);
 		}
-	}
-
-	public function findDirectorName($movies) {
-
-		foreach ($movies as $movie) {
-			
-		}
-
+		$this->set(compact('movie'));
 	}
 
 }

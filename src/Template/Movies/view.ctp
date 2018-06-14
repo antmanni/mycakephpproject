@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Director') ?></th>
-            <td><?= h($movie->director) ?></td>
+            <td><?= h($movie->director->name) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Your rating') ?></th>
