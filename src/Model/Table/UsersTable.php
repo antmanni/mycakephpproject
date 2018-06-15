@@ -94,4 +94,23 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    /*
+     * Hashes password for digest authetication
+     *
+     * @param \Cake\Composer\Script\Event current event.
+     * @return true if suvvesful.
+     */
+    public function beforeSave(Event $event)
+    {
+        $entity = $event->getData('entity');
+
+        // Make a password for digest auth.
+        $entity->digest_hash = DigestAuthenticate::password(
+            $entity->username,
+            $entity->plain_password,
+            env('SERVER_NAME')
+        );
+        return true;
+    }
 }
